@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-ao">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback</title>
+</head>
+<body>
+    <h1>Olá, Mundo!</h1>
+
+    <script>
+        // alert("Olá, Mundo!")
+        // function somar($n1, $n2){
+        //     let res = $n1 + $n2;
+        //     console.log("O resultado é ", res);
+        // }
+
+        // function multiplicar(n1, n2){
+        //     let res = n1 * n2;
+        //     console.log("O resultado é " + Number(res));
+        // }
+
+        // function escolher(callback, callback2){
+        //     callback(4, 7)
+        //     callback2(4, 3);
+        // }
+
+        // escolher(somar, multiplicar)
+
+    
+
+        function resultado(n1, n2, $esco){
+            if($esco == 1){
+                console.log("A função escolhida é Soma e o resultado é " + (n1 + n2));
+            }else{
+                console.log("A função escolhida é Multiplicação e o resultado é " + (n1 * n2));
+            }
+        }
+
+        function escolher(callback, esco){
+            callback(4, 6, esco);            
+        }
+
+        escolher(resultado, 1)
+        escolher(resultado, 4)
+
+        function saudacao(nome='Visitante'){
+            console.log("Olá, eu sou ", nome)
+        }
+
+        function iniciar(callback, nome){
+            console.log("Iniciado...")
+            callback(nome);
+        }
+
+        iniciar(saudacao, "Felismino");
+    </script>
+</body>
+</html>

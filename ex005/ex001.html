@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+    <style>
+        body{
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <h1>Olá, Mundo!</h1>
+
+    <script>
+        const valoresExatos = new Promise(function(resolve, reject){
+            let dividendo = Number(Math.floor((Math.random() * (16 - 4 + 1)) + 4));
+            let divisor = Number(Math.floor((Math.random() * (40 - 20 + 1)) + 20)); 
+            let resultado = divisor / dividendo;
+
+            if(Number.isInteger(resultado) === true){
+                resolve(resultado);
+            }else{
+                reject(resultado);
+            }
+        });
+
+        valoresExatos.then((resultado) =>{
+            console.log("Reusltado Exato: " + resultado);
+        }).catch((erro) =>{
+            console.log("Resultado Decimal: " + erro.toFixed(4).replace(".", ","));
+        }).finally(()=>{
+            console.log("Promessa finalizada com sucesso!")
+        })
+    </script>
+</body>
+</html>

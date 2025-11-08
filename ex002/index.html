@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herança</title>
+</head>
+<body>
+    <h1>Olá, Mundo!</h1>
+
+    <script>
+        // alert("Olá, Mundo!")
+        class Dev{
+            constructor(nome, idade, principalLinguagem){
+                this.nome = String(nome);
+                this.idade = Number(idade);
+                this.principalLinguagem = String(principalLinguagem);
+                this.categoria = "Qualquer";
+            }
+
+            saudacao(){
+                console.log(`Olá, eu sou ${this.nome}! Um Desenvolvedor ${this.categoria}, tenho ${this.idade} anos e a minha principal linguagem é ${this.principalLinguagem}.`)
+            }
+        }
+
+        class FrontEnd extends Dev{
+            constructor(nome, idade, principalLinguagem){
+                super(nome, idade, principalLinguagem);
+                this.categoria = "Front-End";
+            }
+        }
+
+        class BackEnd extends Dev{
+            constructor(nome, idade, principalLinguagem){
+                super(nome, idade, principalLinguagem)
+                this.categoria = "Back-End";
+            }
+        }
+
+        const dev = new Dev("Felismino", 20, "JavaScript");
+        const frontend1 = new FrontEnd("Máquina", 22, "CSS");
+        const backend1 = new BackEnd("Odes", 25, "PHP");
+
+        console.log(dev)
+        console.log(frontend1)
+        console.log(backend1)
+
+        dev.saudacao();
+    </script>
+</body>
+</html>

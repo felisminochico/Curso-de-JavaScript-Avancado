@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-ao">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises VS Callback</title>
+    <style>
+        body{
+            background-color: gray;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Olá, Mundo!</h1>
+
+    <script>
+        // console.log("Olá, Mundo! JavaScript")
+        let estadoGato = "feliz";
+        const resultadoEstadoGato = new Promise(function(resolve, reject){
+            switch(estadoGato){
+                case "feliz":
+                    resolve("Feliz");
+                    break;
+                case "triste":
+                    reject("Triste");
+                    break;
+                case "entediado":
+                    reject("Entediado");
+                    break;
+                default:
+                    reject("Emocionamente indefinido");
+                    break;
+            }
+        })
+
+        resultadoEstadoGato.then((res) =>{
+            console.log("Primeiro then");
+            return [res];
+        }).then((res2) =>{
+            console.log("Segundo then");
+            return `O gato está ${res2[0]}`;
+        }).then((res3) =>{
+            console.log("Terceiro then");
+            console.log("Tudo certo: " + res3);
+        }).catch((erro) =>[
+            console.log("Algo deu Ruim, o gato está: " + erro.toUpperCase())
+        ]).finally(()=>{
+            console.log("Programa finalizado com sucesso!")
+        })
+
+        function mostrarValor(callback){
+            callback([8, 5, 3, 6, 10])
+        }
+
+        mostrarValor(function(array){
+            console.log("Valores do Vetor:")
+            array.forEach((valor, chave) =>{
+                console.log(chave + ": " + valor);
+            })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-ao">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+    <style>
+        body{
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <h1>Olá, Mundo!</h1>
+
+    <script>
+        const umaPromessa = new Promise(function(resolve, reject){
+            let res = 1 + 1;
+            if(res === 2){
+                resolve("Promessa resolvida!");
+            }else{
+                reject("Erro na Promessa.");
+            }
+        })
+
+        umaPromessa.then(function(resultado){
+            console.log("Reusltado do then: " + resultado);
+        }).catch(function(erro){
+            console.log("Valor do catch: " + erro);
+        }).finally(function(){
+            console.log("Promessa finalizada com sucesso!");
+        })
+    </script>
+</body>
+</html>

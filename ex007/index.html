@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-ao">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promisse.all VS Promise.race</title>
+    <style>
+        body{
+            background-color: gray;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Olá, Mundo!</h1>
+
+    <script>
+        // alert("Olá, Mundo! JavaScript")
+        const soma = new Promise(function(resolve, reject){
+            let resultado = 6;
+            setTimeout(()=>{
+                if(resultado == 6){
+                    resolve(resultado);
+                }else{
+                    reject("Falha na Promise 1");
+                }
+            }, 0)
+        })
+
+        const produto = new Promise(function(resolve, reject){
+            let resultado = 20;
+            if(resultado == 2){
+                resolve(resultado);
+            }else{
+                reject("Falha na Promise 2");
+            }
+        })
+
+        const divisao = new Promise((resolve, reject) =>{
+            let resultado = 32;
+            if(resultado == 2){
+                resolve(resultado);
+            }else{
+                reject("Falha na Promise 3");
+            }
+        })
+
+        Promise.all([soma, produto, divisao]).then((resultados) =>{
+            console.log("Tudo certo: " + resultados);
+        }).catch((erro) =>{
+            console.log("Algo deu erro: " + erro);
+        }).finally(()=>{
+            console.log("Programa finalizado com sucesso!");
+        })
+
+        Promise.race([soma, produto, divisao]).then(function(resultado){
+            console.log("Um deles deu certo: " + resultado);
+        }).catch((erro) =>{
+            console.log("Algo deu errado: " + erro);
+        }).finally(()=>{
+            console.log("Programa finalizado com sucesso! Promise.race()");
+        })
+
+        Promise.resolve("Resolvido!").then((res) =>{
+            console.log("Tudo certo: " + res);
+        })
+
+        produto.then(function(certo){
+            console.log("Certo: " + certo)
+        }, function(erro){
+            console.log("ERROOOO: " + erro);
+        }).catch((erro) =>{
+            console.log("Algo deu ruim: " + erro);
+        })
+
+        console.log()
+
+        // function Pessoa(nome, idade){
+        //     this.nome = nome;
+        //     this.idade = idade;
+
+        //     this.apresentar = function(){
+        //         console.log("Olá, eu sou " + this.nome + " e tenho " + this.idade + " anos de idade.");
+        //     }
+        // }
+
+        // function Aluno(nome, idade){
+        //     Object.setPrototypeOf(this, new Pessoa(nome, idade));
+        //     this.estudar = () =>{
+        //         console.log("Aluno " + this.nome + " estudando...");
+        //     }
+        // }
+
+        // const p1 = new Pessoa("Mino", 20);
+        // const a1 = new Aluno("Felismino", 28);
+
+        // p1.apresentar();
+        // a1.apresentar()
+        // a1.estudar()
+    </script>
+</body>
+</html>

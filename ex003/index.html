@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-ao">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototypes</title>
+    <style>
+        body{
+            background-color: gray;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Olá, Mundo!</h1>
+
+    <script>
+        const pessoa = {
+            nome: "Pessoa Qualquer",
+            idade: 0,
+            falar: function(){
+                console.log("Olá, eu sou " + this.nome + " e tenho " + this.idade + " anos de idade.")
+            }
+        }
+
+        const p1 = {
+            nome: "Felismino",
+            // idade: 20
+        }
+
+        pessoa.falar();
+
+        Object.setPrototypeOf(p1, pessoa);
+        
+        console.log(pessoa)
+        console.log(p1)
+        console.log(p1.idade)
+        p1.falar();
+    </script>
+</body>
+</html>
