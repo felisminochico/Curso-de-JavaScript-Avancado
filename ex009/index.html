@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-ao">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Await com then</title>
+</head>
+<body style="background-color: gray; font-family: sans-serif;">
+    <h1>Olá, Mundo!</h1>
+
+    <script>
+        const doismil = () =>{
+            return new Promise((resolve, reject) =>{
+                let res = 9
+                if(res == 9){
+                    setTimeout(()=>{
+                        resolve(res);
+                    }, 2000)
+                }else{
+                    reject("Falha na Promise 1");
+                }
+            })
+        }
+
+        const mil = () => new Promise((resolve, reject) =>{
+            let res = 6
+            if(res == 3){
+                setTimeout(() =>{
+                    resolve(res);
+                }, 1000)
+            }else{
+                reject("Falha na Promise 2");
+            }
+        })
+
+        let resultado1 = doismil();
+        let resultado2 = mil();
+
+        Promise.all([resultado1, resultado2]).then((res) =>{
+            console.log("Tudo certo: " + res[0] + " " + res[1])
+        }).catch((erro) =>{
+            console.log("Algo deu erro: " + erro);
+        })
+
+        const resolverTudo = async () =>{
+            console.log("Calculando Promises")
+            let resultado1 = await doismil();
+            console.log("Valor da Promise 1: " + resultado1)
+            let resultado2 = await mil().then((res) =>{
+                return res;
+            }).catch((erro) =>{
+                console.log("ERRO: " + erro);
+                return erro;
+            });
+            console.log("Valor da Promise 2: " + resultado2)
+
+            console.log("Resultado: " + resultado1 + " " + resultado2)
+        }
+
+        resolverTudo()
+    </script>
+</body>
+</html>
