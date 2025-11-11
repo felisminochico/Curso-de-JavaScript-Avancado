@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-ao">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arguments</title>
+</head>
+<body style="background-color: gray; font-family: sans-serif;">
+    <h1>Olá, Mundo!</h1>
+
+    <script>
+        const teste = function(){
+            const args = Array.from(arguments);
+            let resultado = args.reduce(function(acc, valor, chave){
+                return acc = acc + valor;
+            }, 0);
+            return resultado;
+        }
+
+        console.log(teste(2, 4, 6, 8, 2))
+    </script>
+</body>
+</html>
