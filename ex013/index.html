@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-ao">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spread Operator</title>
+</head>
+<body style="background-color: gray; font-family: sans-serif;">
+    <h1>Oá, Mundo!</h1>
+
+    <script>
+        const vetor = [4, 7, 2];
+        const vetor2 = [...vetor];
+
+        vetor[1] = 44;
+        console.log(vetor);
+        console.log(vetor2)
+
+        const teste = Object.assign(vetor);
+        console.log(teste)
+
+        function exibir(v1, v2, v3){
+            let teste = [v1, v2, v3];
+            return teste.reduce((acc, valor) =>{
+                return acc += valor;
+            })
+        }
+
+        console.log(exibir(...vetor))
+        console.log(exibir(...teste))
+    </script>
+</body>
+</html>
