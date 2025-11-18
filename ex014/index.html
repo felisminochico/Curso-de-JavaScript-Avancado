@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-ao">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destructuring</title>
+</head>
+<body style="background-color: gray; font-family: sans-serif;">
+    <h1>Olá, Mundo!</h1>
+
+    <script>
+        // console.log("Oá, Mundo! JavaScript")
+        const vetor = ["Mino", 20, "Masculino"];
+        let [nome, , sexo] = vetor;
+        console.log(`Olá, sou ${nome}! Tenho qualquer anos de idade e sou do sexo ${sexo}`);
+
+        const obj = {n: "Maria", i: 28}
+        let {i, n} = obj;
+
+        console.log("Nome: " + n + " Idade: " + i)
+
+        let a, b;
+
+        ({a, b} = {a: 3, b: 9});
+        const obj2 = {d: 6, e: 8};
+        // let d, e;
+        ({d, e} = obj2);
+
+        console.log("a: " + a + " b: " + b)
+        console.log("d: " + d + " e: " + e)
+
+        const obj3 = {f: 60, g: 12}
+        let {f: m, g: l} = obj3;
+
+        console.log("Valores: ", m, l);
+
+        const metadata = {
+            title: "Dev",
+            translations: [{
+                locale: "de",
+                localization_tags: [],
+                last_edit: "18-11-2025 16:32:21",
+                url: "felismino-com",
+                title: "JavaScript"
+            }],
+            url: "www/curso/javascript"
+        };
+
+        ({title: titulo, translations: [{title: titulo2}]} = metadata)
+        console.log("Informações: ", titulo, titulo2);
+
+        function userID({id}){
+            console.log("ID enviado: " + id);
+        }
+
+        function mostarDados({displayName, fullName:objN}){
+            console.log("Display Name: ", displayName);
+            console.log("Nome Completo: ", objN.firstName, objN.lastName);
+        }
+
+        const user = {
+            id: 20,
+            displayName: "FChico",
+            fullName: {
+                firstName: "Felismino",
+                lastName: "Chico"
+            }
+        };
+
+        userID(user);
+        mostarDados(user)
+
+        function valores([no, ida, pr]){
+            console.log("Valores: ", no, ida, pr);
+        }
+
+        const vet = ["Chico", 22, "Marucho"];
+
+        valores(vet)
+
+        let saída = "e";
+        let {[saída]: valor} = {e: "Estudo concluído com sucesso"};
+
+        console.log(valor)
+        console.log(saída)
+    </script>
+</body>
+</html>
