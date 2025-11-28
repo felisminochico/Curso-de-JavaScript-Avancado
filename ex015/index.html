@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-ao">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursão</title>
+</head>
+<body style="background-color: gray; font-family:sans-serif;">
+    <h1>Olá, Mundo!</h1>
+
+    <script>
+        let res = 0;
+        for(let c = 1; c <= 10; c++){
+            res = res + c;
+        }
+
+        console.log(res);
+
+        function mostrarNumero(valor){
+            if(valor == 1){
+                return 1;
+            }
+            console.log("Passou: ", valor)
+            return valor + mostrarNumero(valor - 1); 
+        }
+
+        console.log(mostrarNumero(4))
+    </script>
+</body>
+</html>
