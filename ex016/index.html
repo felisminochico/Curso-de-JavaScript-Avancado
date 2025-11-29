@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursão - 2</title>
+</head>
+<body style="background-color: gray; font-family: sans-serif;">
+    <h1>Olá, Mundo!</h1>
+
+    <script>
+        // function contagemRegressiva(valor){
+        //     setTimeout(() =>{
+        //         if(valor == 0){
+        //             console.log("Feliz Ano Novo!!!")
+        //             return;
+        //         }
+
+        //         console.log(valor);
+        //         return contagemRegressiva(valor - 1);
+        //     }, 1000)
+        // }
+
+        // // contagemRegressiva(10);resolve(valor);
+
+
+        // function promise(valor){
+        //     return new Promise((resolve, reject) =>{
+        //         setTimeout(function(){
+        //             resolve(valor);
+        //         }, 1000)
+        //     })
+        // }
+
+        // async function contagemRegressiva2(valor){
+        //     if(valor == 0){
+        //         setTimeout(()=>{
+        //             console.log("Feliz Ano Novo!!!");
+        //         }, 1000)
+        //         return;
+        //     }
+
+        //     await promise(valor);
+        //     console.log(valor)
+
+        //     return contagemRegressiva2(valor - 1);
+        // }
+
+        // contagemRegressiva2(15);
+
+        function fatorial(numero){
+            if(numero == 1){
+                return 1;
+            }
+
+            return numero * fatorial(numero - 1);
+        }
+
+        console.log(fatorial(3))
+        
+        // function promiseTeste(){
+        //         return new Promise((resolve, reject) =>{
+        //         let valor = 8;
+        //         if(valor == 8){
+        //             setTimeout(() =>{
+        //                 resolve(valor);
+        //             }, 3000)
+        //         }else{
+        //             reject("ERRO");
+        //         }
+        //     })
+        // }
+
+        // async function resolverPromise(){
+        //     let res = await promiseTeste();
+
+        //     console.log("Promise Resolvida: !", res);
+        // }
+        // resolverPromise()
+
+        // console.log("Teste de Assíncronismo");
+    </script>
+</body>
+</html>
