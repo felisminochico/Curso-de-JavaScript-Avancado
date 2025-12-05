@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-ao">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curying</title>
+</head>
+<body style="background-color: gray; font-family: sans-serif;">
+    <h1>Olá, Mundo!</h1>
+
+    <script>
+        function inicio(a, b){
+            let res;
+
+            function verificar(){
+                return res = a > b;
+            }
+
+            return verificar();
+        }
+
+        console.log(inicio(4, 20))
+
+        function incio2(a){
+            function verificar2(b){
+                if (b === undefined){
+                    return a;
+                }
+                console.log(a > b);
+
+                return function(c){
+                    return b > c;
+                }
+            }
+
+            return verificar2;
+        }
+
+        console.log(incio2(20)(3)(10));
+
+        function inciar(a){
+            function teste(b){
+                return b;
+            }
+        }
+
+        console.log("")
+        
+        function soma(a, res = false){
+            let result = res;
+            return function teste(b){
+                if(b === undefined){
+                    return result;
+                }
+                
+                let res = a > b;
+                // console.log(res);
+                console.log("a: ", a, " b: ", b, " res: ", res)
+                a = b;
+                // console.log("a: ", a, " b: ", b)
+                return soma(a, res);
+            }
+        }
+
+        console.log(soma(30)())
+
+        console.log("")
+
+        function currying(a){
+            let res = false;
+            return function teste(b){
+                if(b === undefined){
+                    return res;
+                }
+
+                res = a > b;
+                console.log("a: ", a, " b: ", b)
+                a = b;
+                console.log("a: ", a, " b: ", b)
+
+                return teste
+            }
+        }
+
+        console.log(currying(6)(40)(20)())
+
+        function acumulador(valor){
+            return function acumulador2(valor2){
+                if(!valor2){
+                    return valor;
+                }
+
+                valor += valor2;
+                return acumulador2;
+            }
+        }
+
+        let acumule = acumulador(4)(8)(9)();
+        console.log("")
+        console.log(acumule);
+    </script>
+</body>
+</html>
